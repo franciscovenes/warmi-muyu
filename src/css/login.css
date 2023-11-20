@@ -1,0 +1,65 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.login-form {
+  min-width: 300px;
+}
+
+.login-form-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  width: 100%;
+}
+
+.login-form-input-container {
+  background-color: #d9d9d9;
+  display: flex;
+  align-items: center;
+  padding: 1em 0.5em;
+  justify-content: space-between;
+  border-radius: 5px;
+  gap: 0.25em;
+}
+
+.login-err-msg {
+  color: red;
+  font-size: 0.9rem;
+
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .login-container {
+    display: grid;
+    grid-template-columns: 1.25fr 2fr;
+    grid-template-areas:
+      "logo form"
+      "footer footer";
+  }
+
+  .login-container > .logo {
+    grid-area: logo;
+    max-width: 300px;
+    justify-self: end;
+  }
+
+  .login-container > .login-form {
+    grid-area: form;
+    justify-self: start;
+  }
+
+  .login-container > .login-form > h4 {
+    align-self: flex-start;
+  }
+
+  .login-container > .footer-container {
+    grid-area: footer;
+    font-size: 1rem;
+  }
+}

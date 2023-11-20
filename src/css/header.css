@@ -1,0 +1,31 @@
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logout-btn {
+  font-family: Inter, sans-serif;
+  font-weight: bold;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.25em;
+  border-style: none;
+  color: inherit;
+  font-size: 1rem;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.header-nav-container {
+  display: flex;
+  gap: 1.5em;
+}
+
+.return-home-link {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.25em;
+}

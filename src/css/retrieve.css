@@ -1,0 +1,36 @@
+.retrieve-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+}
+
+.retrieve-results {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+@media (min-width: 768px) {
+  .retrieve-container > .form {
+    max-width: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    align-items: start;
+  }
+
+  .retrieve-container > .form > .form-btn {
+    grid-column: -1 / 1;
+    justify-self: center;
+    max-width: 400px;
+  }
+
+  .retrieve-results {
+    width: 100%;
+    display: grid;
+    gap: 0.5em;
+    align-items: start;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  }
+}

@@ -1,0 +1,32 @@
+.mainLayout-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  min-height: 100vh;
+}
+
+header {
+  background-color: antiquewhite;
+}
+
+main {
+  background-color: beige;
+}
+
+footer {
+  background-color: bisque;
+}
+
+.mainLayout-container .form-input {
+  padding: 1em 0.5em;
+  background-color: #d9d9d9;
+  width: 100%;
+  font-size: 0.9rem;
+  height: 50px;
+}
+
+.mainLayout-container .form-input:focus {
+  border: 1px solid #376065;
+  -webkit-box-shadow: 0px 0px 5px #376065;
+  box-shadow: 0px 0px 5px #376065;
+}

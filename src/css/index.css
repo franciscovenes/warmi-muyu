@@ -1,0 +1,91 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  /* color-scheme: light dark; */
+  color: #376065;
+  background-color: #ffffff;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1em;
+  accent-color: #376065;
+}
+
+a {
+  font-weight: 500;
+  color: #376065;
+  text-decoration: inherit;
+}
+a:hover {
+  font-weight: 700;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+  max-width: 500px;
+  width: 100%;
+}
+
+.form-label {
+  font-weight: 500;
+}
+
+.form-btn {
+  margin-top: 1em;
+}
+
+.form-text-err {
+  color: red;
+}
+
+input[type="text"],
+input[type="password"] {
+  color: #376065;
+  border-style: none;
+  font-family: Inter, sans-serif;
+  font-size: 0.9rem;
+  outline: none;
+  background-color: transparent;
+  width: 100%;
+}
+
+.btn {
+  font-family: Inter, sans-serif;
+  background-color: transparent;
+  color: #376065;
+  border: solid 1px;
+  padding: 1em;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: ease-in 0.2s;
+  cursor: pointer;
+  width: 80%;
+}
+
+.btn:hover:enabled {
+  color: white;
+  background-color: #376065;
+}
+
+.btn:disabled {
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.logo {
+  max-width: 150px;
+}

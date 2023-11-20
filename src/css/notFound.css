@@ -1,0 +1,10 @@
+.notFound-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.notFound-logo {
+  max-width: 150px;
+}

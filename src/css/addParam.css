@@ -1,0 +1,84 @@
+.addParam-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.addParam-firstRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.addParam-addElement-openBoxBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.25em;
+  cursor: pointer;
+}
+
+.addParam-addElement-modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.addParam-addElement-box {
+  display: flex;
+  align-items: center;
+  padding: 0.75em 0.5em;
+  border: solid 1px #5a5a5a;
+  width: 70%;
+  right: 0;
+  background-color: whitesmoke;
+  border-radius: 5px;
+  gap: 0.5em;
+}
+
+.addParam-addElement-input {
+  border-style: none;
+  background-color: transparent;
+  outline: none;
+  color: #5a5a5a;
+  padding: 0;
+  width: 100%;
+}
+
+.addParam-addElement-input::placeholder {
+  font-style: italic;
+}
+
+.addParam-addElement-addBtn {
+  display: flex;
+  align-items: center;
+  background-color: #376065;
+  color: whitesmoke;
+  padding: 0.25em;
+  font-size: 0.75rem;
+  cursor: pointer;
+  gap: 0.25em;
+  border-style: none;
+}
+
+.addParam-addElement-addBtn:disabled {
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.addParam-addElement-close {
+  cursor: pointer;
+}
+
+.addParam-addElement-msg {
+  color: green;
+  font-size: 0.75rem;
+}
+
+.addParam-addElement-msg-error {
+  color: red;
+}
