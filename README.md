@@ -1,8 +1,12 @@
-# React + Vite
+# Warmi Muyu App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a test version of the Warmi Muyu App, using React and Firebase.
 
-Currently, two official plugins are available:
+## How to use it
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+To try the app, access it with the following editor credentials
+
+email:
+password:
+
+You'll have access to all functionalities except for the ability to create new users (exclusive for admin users).
