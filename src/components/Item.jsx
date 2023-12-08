@@ -204,7 +204,7 @@ export default function Item({ data, docRef, setFunc }) {
                   className="item-edit-input"
                 />
               ) : (
-                <span>$ {internalData.hours} </span>
+                <span>{internalData.hours} </span>
               )}
               {edit && <MdModeEdit onClick={() => handleEditField("hours")} />}
             </div>
