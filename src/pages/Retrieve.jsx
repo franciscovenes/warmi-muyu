@@ -21,7 +21,6 @@ export default function Retrieve() {
 
   // State for retrieved items
   const [searchResults, setSearchResults] = useState([]);
-  console.log("Search results: ", searchResults);
 
   // State to control if items are being requested
   const [loadItems, setLoadItems] = useState(false);
