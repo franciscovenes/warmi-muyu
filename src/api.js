@@ -13,6 +13,7 @@ import {
   where,
   query,
   addDoc,
+  getDoc,
 } from "firebase/firestore";
 
 import {
@@ -137,15 +138,46 @@ export function addNewDocRef() {
 
 export async function addNewItem(docRef, data) {
   try {
-    return await setDoc(docRef, {
+    await setDoc(docRef, {
       ...data,
       inputDate: Timestamp.fromDate(new Date()),
     });
   } catch (error) {
     console.log(error);
   }
+}
 
-  return null;
+export async function getLastItem(docRef, setFunc) {
+  try {
+    const lastItem = await getDoc(docRef);
+    const data = lastItem.data();
+    if (data) {
+      const dataObj = {
+        models: [data.model.charAt(0).toUpperCase() + data.model.slice(1)],
+        types: [capitalizeEachWord(data.type)],
+        artisans: [capitalizeEachWord(data.artisan)],
+        length: data.length,
+        width: data.width,
+        colors: data.colors.map((color) => capitalizeEachWord(color)),
+        matPrice: data.matPrice,
+        hours: data.hours,
+        price: data.price,
+        conditions: [capitalizeEachWord(data.condition)],
+        states: [capitalizeEachWord(data.state)],
+        location: data.location,
+        observations: data.observations,
+        imageURL: data.imageURL,
+      };
+      setFunc({
+        docData: dataObj,
+        docRef: docRef,
+      });
+    } else {
+      setFunc({});
+    }
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export async function uploadFile(file, type, id) {
@@ -169,7 +201,7 @@ export async function uploadFile(file, type, id) {
   return downloadURL;
 }
 
-export function monitorItem(docRef, setFunc) {
+/* export function monitorItem(docRef, setFunc) {
   return onSnapshot(docRef, (doc) => {
     const data = doc.data();
     if (data) {
@@ -193,7 +225,7 @@ export function monitorItem(docRef, setFunc) {
       setFunc(dataObj);
     } else setFunc({});
   });
-}
+} */
 
 export function monitorItemsCollection(setFunc) {
   return onSnapshot(itemsCollectionRef, (snapshot) => {
@@ -241,7 +273,8 @@ export function monitorItemsCollection(setFunc) {
   });
 }
 
-export async function removeItem(docRef, imageURL) {
+export async function removeItem(docRef, imageURL, setFunc) {
+  console.log(docRef.id, setFunc);
   if (imageURL) {
     const storageRef = ref(storage, "images/" + docRef.id);
     try {
@@ -251,6 +284,8 @@ export async function removeItem(docRef, imageURL) {
     }
   }
   await deleteDoc(docRef);
+
+  if (setFunc) setFunc({});
 }
 
 export async function updateItem(docRef, data) {

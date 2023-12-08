@@ -1,8 +1,8 @@
-import { useContext, useEffect, useState, useRef, lazy, Suspense } from "react";
+import { useContext, useState, lazy, Suspense } from "react";
 import { AuthenticationContext } from "../components/Authentication";
 import TagsInput from "../components/TagsInput";
 import AddParam from "../components/AddParam";
-import { addNewItem, uploadFile, addNewDocRef, monitorItem } from "../api";
+import { addNewItem, uploadFile, addNewDocRef, getLastItem } from "../api";
 import "../css/add.css";
 import {
   handleInputChange,
@@ -50,15 +50,16 @@ export default function Add() {
   const [loadItem, setLoadItem] = useState(false);
 
   // Creates a reference of the item do be added (stores its reference in the database)
-  const newDocRef = useRef(addNewDocRef());
+  /* const newDocRef = useRef(addNewDocRef());
+  console.log(newDocRef.current.id); */
 
   // Creates a listener to changes in the referenced doc. If it changes (when it is added to the database), add its data to the item state
-  useEffect(() => {
+  /* useEffect(() => {
     const unsubscribe = monitorItem(newDocRef.current, setItem);
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, []); */
 
   // State controlling empty fields in the form
   const [emptyFields, setEmptyFields] = useState([]);
@@ -147,9 +148,10 @@ export default function Add() {
     event.preventDefault();
     // Check if required fields aren't empty
     if (!getEmptyFields(setEmptyFields, data).length) {
+      const newDocRef = addNewDocRef();
       // Add image file to firestore storage (name equals newDocRef id). Store image URL
       const downloadURL = addImage
-        ? await uploadFile(addImage, addImage.type, newDocRef.current.id)
+        ? await uploadFile(addImage, addImage.type, newDocRef.id)
         : false;
 
       // Data to send to the items collection as a doc (firebase)
@@ -172,7 +174,10 @@ export default function Add() {
       };
 
       // Add data to firestore database by setting it to newDocRef
-      await addNewItem(newDocRef.current, docData);
+      await addNewItem(newDocRef, docData);
+
+      // Show item
+      await getLastItem(newDocRef, setItem);
 
       // clean data
       setData({
@@ -399,7 +404,12 @@ export default function Add() {
       <div className="add-results">
         {Object.keys(item).length > 0 && (
           <Suspense fallback={<h2>Cargando item...</h2>}>
-            <Item data={item} docRef={newDocRef.current} />
+            <Item
+              key={item.docRef.id}
+              data={item.docData}
+              docRef={item.docRef}
+              setFunc={setItem}
+            />
           </Suspense>
         )}
       </div>

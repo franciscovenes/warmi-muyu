@@ -12,7 +12,7 @@ import {
   getEmptyFields,
 } from "../utils/utils";
 
-export default function Item({ data, docRef }) {
+export default function Item({ data, docRef, setFunc }) {
   // State to keep track of item's data while editing
   const [internalData, setInternalData] = useState({ ...data });
 
@@ -424,7 +424,9 @@ export default function Item({ data, docRef }) {
 
           <button
             className="btn"
-            onClick={async () => await removeItem(docRef, data.imageURL)}
+            onClick={async () =>
+              await removeItem(docRef, data.imageURL, setFunc)
+            }
           >
             Delete <AiOutlineClose />
           </button>
@@ -437,4 +439,5 @@ export default function Item({ data, docRef }) {
 Item.propTypes = {
   data: PropTypes.object,
   docRef: PropTypes.object,
+  setFunc: PropTypes.func,
 };
